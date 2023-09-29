@@ -59,7 +59,8 @@ if users.get(user_name) == password:
     print(oddelovac)
 
 else:
-    print(f"username: {user_name}\npassword: {password}\nunregistered user, terminating the program...")
+    print(
+        f"username: {user_name}\npassword: {password}\nunregistered user, terminating the program...")
     quit()
 
 ##################### Text split into articles and index  #####################
@@ -140,7 +141,7 @@ for words in striped_analyzed_text:
             uppercase_words[words] = 1
         else:
             uppercase_words[words] += 1
-            
+
 print(f"Uppercase words: {uppercase_words}")
 print(oddelovac)
 
@@ -161,11 +162,11 @@ print(oddelovac)
 
 numbers_count = {}
 
+##### TOTO JE RESENI Z CHATGPT, ZADNE JINE MI NEFUNGOVALO A NEMOHL JSEM NA TO PROSTE PRIJIT.... 
+##### .. ZADNY JINY ZPUSOB MI NENASEL "30N", KTERE JE V ZADANI
+
 for numbers in striped_analyzed_text:
-    if numbers.isnumeric():
-        if numbers not in numbers_count:
-            numbers_count[numbers] = 1
-        else:
-            numbers_count[numbers] += 1
+    if any(char.isdigit() for char in numbers):
+        numbers_count[numbers] = numbers_count.get(numbers, 0) + 1
 
 print(f"Numbers: {numbers_count}")
