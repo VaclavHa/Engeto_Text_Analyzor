@@ -5,7 +5,7 @@ author: Václav Hanzl
 email: hanzlvaclav00@gmail.com
 discord: Wencour#6130 / Vašek H. (Engeto server)
 """
-# import ...
+# import
 
 
 TEXTS = ['''
@@ -38,23 +38,29 @@ garpike and stingray are also present.'''
 
 
 ##################### Users, input username and password, pass or quit #####################
+oddelovac = "=" * 50
 
-# users = {
-#     "bob": "123",
-#     "ann": "pass123",
-#     "mike": "password123",
-#     "liz": "pass123"
-# }
+users = {
+    "bob": "123",
+    "ann": "pass123",
+    "mike": "password123",
+    "liz": "pass123"
+}
 
 
-# user_name = input("What is your username: ").lower()
-# password = input("What is your password: ")
+user_name = input("What is your username: ").lower()
+password = input("What is your password: ")
 
-# if users.get(user_name) == password:
-#     print(f"\nHi {user_name.title()}, welcome to our text analyzator!\n")
-# else:
-#     print(f"username: {user_name}\npassword: {password}\nunregistered user, terminating the program...")
-#     quit()
+print(oddelovac)
+
+
+if users.get(user_name) == password:
+    print(f"\nHi {user_name.title()}, welcome to our text analyzator!\n")
+    print(oddelovac)
+
+else:
+    print(f"username: {user_name}\npassword: {password}\nunregistered user, terminating the program...")
+    quit()
 
 ##################### Text split into articles and index  #####################
 
@@ -64,12 +70,15 @@ print(f"There are {number_of_articles} articles to choose from.\n")
 
 
 for index, text in enumerate(TEXTS, start=1):
-    print(f"Article number {index}: \n{text}\n")
+    print(f"Article number {index}:\n{text}\n")
+print(oddelovac)
+
 
 ##################### User input choosing number of article  #####################
 
 
 article_input = input("Choose the number of article you wanna check: ")
+print(oddelovac)
 
 if article_input.isdigit():
     article_number = int(article_input)
@@ -83,6 +92,7 @@ if article_input.isdigit():
 else:
     print(f"You have not entered a digit.\nPlease try again...")
 
+
 ##################### Text split  #####################
 
 chosen_article_number.split()
@@ -93,7 +103,7 @@ for words in chosen_article_number.split():
     clear_word = words.strip(".,:!?;")
     striped_analyzed_text.append(clear_word)
 
-##################### Single word counter  #####################
+##################### Word counter  #####################
 single_word_counter = {}
 
 for words in striped_analyzed_text:
@@ -102,21 +112,60 @@ for words in striped_analyzed_text:
     else:
         single_word_counter[words] += 1
 
-print(single_word_counter, "\n")
+print(f"Word counter: {single_word_counter}")
+print(oddelovac)
 
-##################### words starting with capital letter  #####################
+
+##################### Words starting with only capital letter  #####################
 
 capital_letter_words = {}
 
 for words in striped_analyzed_text:
-    if words.istitle():
+    if words.istitle() and words.isalpha():
         if words not in capital_letter_words:
             capital_letter_words[words] = 1
         else:
             capital_letter_words[words] += 1
 
-print(capital_letter_words)
+print(f"Capital letter words: {capital_letter_words}")
+print(oddelovac)
 
-##################### Text split  #####################
-##################### Text split  #####################
-##################### Text split  #####################
+##################### Uppercase words  #####################
+
+uppercase_words = {}
+
+for words in striped_analyzed_text:
+    if words.isupper() and words.isalpha():
+        if words not in uppercase_words:
+            uppercase_words[words] = 1
+        else:
+            uppercase_words[words] += 1
+            
+print(f"Uppercase words: {uppercase_words}")
+print(oddelovac)
+
+##################### Lowercase words  #####################
+
+lowercase_words = {}
+
+for words in striped_analyzed_text:
+    if words.islower() and words.isalpha():
+        if words not in lowercase_words:
+            lowercase_words[words] = 1
+        else:
+            lowercase_words[words] += 1
+
+print(f"Lowercase words: {lowercase_words}")
+print(oddelovac)
+##################### Number count  #####################
+
+numbers_count = {}
+
+for numbers in striped_analyzed_text:
+    if numbers.isnumeric():
+        if numbers not in numbers_count:
+            numbers_count[numbers] = 1
+        else:
+            numbers_count[numbers] += 1
+
+print(f"Numbers: {numbers_count}")
