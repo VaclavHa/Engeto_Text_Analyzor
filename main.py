@@ -3,7 +3,7 @@ První projekt do Engeto Online Python Akademie
 
 author: Václav Hanzl
 email: hanzlvaclav00@gmail.com
-discord: Wencour#6130 / Vašek H. (on Engeto server)
+discord: Wencour#6130 / Vašek H. (Engeto server)
 """
 # import ...
 
@@ -36,4 +36,32 @@ other freshwater genera and herring similar to those
 in modern oceans. Other fish such as paddlefish,
 garpike and stingray are also present.'''
 ]
+
+
+
+# Users, input username and password, pass or quit
+
+users = {
+    "bob": "123",
+    "ann": "pass123", 
+    "mike": "password123", 
+    "liz": "pass123"
+}
+
+
+user_name = input("What is your username: ").lower()
+password = input("What is your password: ")
+
+if users.get(user_name) == password:
+    print(f"Hi {user_name.title()}, welcome to our text analyzator!")
+else:
+    print(f"Sorry the user or password is wrong. Please try again...")
+    quit
+
+
+
+
+
+
+
 
