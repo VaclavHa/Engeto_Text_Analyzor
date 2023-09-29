@@ -108,10 +108,11 @@ for words in chosen_article_number.split():
 single_word_counter = {}
 
 for words in striped_analyzed_text:
-    if words not in single_word_counter:
-        single_word_counter[words] = 1
-    else:
-        single_word_counter[words] += 1
+    if words.isalpha():
+        if words not in single_word_counter:
+            single_word_counter[words] = 1
+        else:
+            single_word_counter[words] += 1
 
 print(f"Word counter: {single_word_counter}")
 print(oddelovac)
@@ -162,11 +163,24 @@ print(oddelovac)
 
 numbers_count = {}
 
-##### TOTO JE RESENI Z CHATGPT, ZADNE JINE MI NEFUNGOVALO A NEMOHL JSEM NA TO PROSTE PRIJIT.... 
-##### .. ZADNY JINY ZPUSOB MI NENASEL "30N", KTERE JE V ZADANI
+# TOTO JE RESENI Z CHATGPT, ZADNE JINE MI NEFUNGOVALO A NEMOHL JSEM NA TO PROSTE PRIJIT....
+# .. ZADNY JINY ZPUSOB MI NENASEL "30N", KTERE JE V ZADANI
 
 for numbers in striped_analyzed_text:
-    if any(char.isdigit() for char in numbers):
-        numbers_count[numbers] = numbers_count.get(numbers, 0) + 1
+    if numbers.isdigit():
+        if numbers not in numbers_count:
+            numbers_count[numbers] = 1
+        else:
+            numbers_count[numbers] += 1
+
 
 print(f"Numbers: {numbers_count}")
+
+##################### Numbers sum  #####################
+
+numbers_summary = 0
+
+for number in numbers_count:
+    numbers_summary += int(number)
+
+print(numbers_summary)
