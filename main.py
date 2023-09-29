@@ -56,7 +56,7 @@ garpike and stingray are also present.'''
 #     print(f"username: {user_name}\npassword: {password}\nunregistered user, terminating the program...")
 #     quit()
 
-##################### Text split and index  #####################
+##################### Text split into articles and index  #####################
 
 number_of_articles = len(TEXTS)
 
@@ -82,3 +82,41 @@ if article_input.isdigit():
         quit()
 else:
     print(f"You have not entered a digit.\nPlease try again...")
+
+##################### Text split  #####################
+
+chosen_article_number.split()
+
+striped_analyzed_text = []
+
+for words in chosen_article_number.split():
+    clear_word = words.strip(".,:!?;")
+    striped_analyzed_text.append(clear_word)
+
+##################### Single word counter  #####################
+single_word_counter = {}
+
+for words in striped_analyzed_text:
+    if words not in single_word_counter:
+        single_word_counter[words] = 1
+    else:
+        single_word_counter[words] += 1
+
+print(single_word_counter, "\n")
+
+##################### words starting with capital letter  #####################
+
+capital_letter_words = {}
+
+for words in striped_analyzed_text:
+    if words.istitle():
+        if words not in capital_letter_words:
+            capital_letter_words[words] = 1
+        else:
+            capital_letter_words[words] += 1
+
+print(capital_letter_words)
+
+##################### Text split  #####################
+##################### Text split  #####################
+##################### Text split  #####################
