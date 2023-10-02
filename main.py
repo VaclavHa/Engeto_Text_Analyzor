@@ -95,14 +95,12 @@ else:
     print(f"You have not entered a digit.\nPlease try again...")
     quit()
 
-##################### Text split  #####################
-
-chosen_article_number.split()
+##################### Text split and strip  #####################
 
 striped_analyzed_text = []
 
 for words in chosen_article_number.split():
-    clear_word = words.strip(".,:!?;")
+    clear_word = words.strip(".,:!?;/-")
     striped_analyzed_text.append(clear_word)
 
 ##################### Word counter  #####################
@@ -229,4 +227,3 @@ for length in range(1, max_length + 1):
     print(f"{length:<5}|{bar:^20}|{freq:>5}")
 
 print(splitter)
-print(f"TADAAAAA? O:)")
