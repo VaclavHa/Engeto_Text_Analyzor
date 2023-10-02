@@ -56,12 +56,16 @@ print(splitter)
 
 
 if users.get(user_name) == password:
-    print(f"\nHi {user_name.title()}, welcome to our text analyzator!\n")
+    print(f"\nHi {user_name.title()}, welcome to text analyzator!\n")
     print(splitter)
 
 else:
     print(
-        f"Username: {user_name}\nPassword: {password}\nUnregistered user, terminating the program...")
+f"""Username: {user_name}
+Password: {password}
+Unregistered user!
+Terminating the program..."""
+)
     quit()
 
 ##################### Text split into articles and index  #####################
@@ -79,7 +83,7 @@ print(splitter)
 ##################### User input choosing number of article  #####################
 
 
-article_input = input("Choose the number of article you wanna check: ")
+article_input = input("Choose the number of article you wanna analyze: ")
 print(splitter)
 
 if article_input.isdigit():
@@ -172,9 +176,6 @@ print(splitter)
 ##################### Number count  #####################
 numbers_count = 0
 numbers_occurance = {}
-
-# TOTO JE RESENI Z CHATGPT, ZADNE JINE MI NEFUNGOVALO A NEMOHL JSEM NA TO PROSTE PRIJIT....
-# .. ZADNY JINY ZPUSOB MI NENASEL "30N", KTERE JE V ZADANI V PRVNIM TEXTU
 
 for numbers in striped_analyzed_text:
     if numbers.isdigit():
