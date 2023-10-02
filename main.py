@@ -4,6 +4,7 @@ První projekt do Engeto Online Python Akademie
 author: Václav Hanzl
 email: hanzlvaclav00@gmail.com
 discord: Wencour#6130 / Vašek H. (Engeto server)
+
 """
 # import
 
@@ -38,7 +39,7 @@ garpike and stingray are also present.'''
 
 
 ##################### Users, input username and password, pass or quit #####################
-oddelovac = "=" * 50
+splitter = "=" * 50
 
 users = {
     "bob": "123",
@@ -51,16 +52,16 @@ users = {
 user_name = input("What is your username: ").lower()
 password = input("What is your password: ")
 
-print(oddelovac)
+print(splitter)
 
 
 if users.get(user_name) == password:
     print(f"\nHi {user_name.title()}, welcome to our text analyzator!\n")
-    print(oddelovac)
+    print(splitter)
 
 else:
     print(
-        f"username: {user_name}\npassword: {password}\nunregistered user, terminating the program...")
+        f"Username: {user_name}\nPassword: {password}\nUnregistered user, terminating the program...")
     quit()
 
 ##################### Text split into articles and index  #####################
@@ -72,14 +73,14 @@ print(f"There are {number_of_articles} articles to choose from.\n")
 
 for index, text in enumerate(TEXTS, start=1):
     print(f"Article number {index}:\n{text}\n")
-print(oddelovac)
+print(splitter)
 
 
 ##################### User input choosing number of article  #####################
 
 
 article_input = input("Choose the number of article you wanna check: ")
-print(oddelovac)
+print(splitter)
 
 if article_input.isdigit():
     article_number = int(article_input)
@@ -92,7 +93,7 @@ if article_input.isdigit():
         quit()
 else:
     print(f"You have not entered a digit.\nPlease try again...")
-
+    quit()
 
 ##################### Text split  #####################
 
@@ -105,82 +106,127 @@ for words in chosen_article_number.split():
     striped_analyzed_text.append(clear_word)
 
 ##################### Word counter  #####################
+total_word_count = 0
+
 single_word_counter = {}
+
 
 for words in striped_analyzed_text:
     if words.isalpha():
+        total_word_count += 1
         if words not in single_word_counter:
             single_word_counter[words] = 1
         else:
             single_word_counter[words] += 1
 
-print(f"Word counter: {single_word_counter}")
-print(oddelovac)
+# print(f"Word counter: {single_word_counter}")
+print(f"There are {total_word_count} words in the seleceted text.")
+print(splitter)
 
 
 ##################### Words starting with only capital letter  #####################
-
+capital_letter_count = 0
 capital_letter_words = {}
 
 for words in striped_analyzed_text:
     if words.istitle() and words.isalpha():
+        capital_letter_count += 1
         if words not in capital_letter_words:
             capital_letter_words[words] = 1
         else:
             capital_letter_words[words] += 1
 
-print(f"Capital letter words: {capital_letter_words}")
-print(oddelovac)
+# print(f"Capital letter words: {capital_letter_words}")
+print(f"There are {capital_letter_count} titlecase words.")
+print(splitter)
 
 ##################### Uppercase words  #####################
-
+uppercase_count = 0
 uppercase_words = {}
 
 for words in striped_analyzed_text:
     if words.isupper() and words.isalpha():
+        uppercase_count += 1
         if words not in uppercase_words:
             uppercase_words[words] = 1
         else:
             uppercase_words[words] += 1
 
-print(f"Uppercase words: {uppercase_words}")
-print(oddelovac)
+# print(f"Uppercase words: {uppercase_words}")
+print(f"There are {uppercase_count} uppercase words.")
+print(splitter)
 
 ##################### Lowercase words  #####################
-
+lowercase_count = 0
 lowercase_words = {}
 
 for words in striped_analyzed_text:
     if words.islower() and words.isalpha():
+        lowercase_count += 1
         if words not in lowercase_words:
             lowercase_words[words] = 1
         else:
             lowercase_words[words] += 1
 
-print(f"Lowercase words: {lowercase_words}")
-print(oddelovac)
+# print(f"Lowercase words: {lowercase_words}")
+print(f"There are {lowercase_count} lowercase words.")
+print(splitter)
 ##################### Number count  #####################
-
-numbers_count = {}
+numbers_count = 0
+numbers_occurance = {}
 
 # TOTO JE RESENI Z CHATGPT, ZADNE JINE MI NEFUNGOVALO A NEMOHL JSEM NA TO PROSTE PRIJIT....
-# .. ZADNY JINY ZPUSOB MI NENASEL "30N", KTERE JE V ZADANI
+# .. ZADNY JINY ZPUSOB MI NENASEL "30N", KTERE JE V ZADANI V PRVNIM TEXTU
 
 for numbers in striped_analyzed_text:
     if numbers.isdigit():
-        if numbers not in numbers_count:
-            numbers_count[numbers] = 1
+        numbers_count += 1
+        if numbers not in numbers_occurance:
+            numbers_occurance[numbers] = 1
         else:
-            numbers_count[numbers] += 1
+            numbers_occurance[numbers] += 1
 
 
-print(f"Numbers: {numbers_count}")
+# print(f"Numbers: {numbers_occurance}")
+print(f"There are {numbers_count} numeric strings.")
+
+print(splitter)
 
 ##################### Numbers sum  #####################
 
 numbers_summary = 0
 
-for number in numbers_count:
+for number in numbers_occurance:
     numbers_summary += int(number)
 
-print(numbers_summary)
+print(f"The sum of all the numbers is: {numbers_summary}")
+
+print(splitter)
+
+##################### Graf  #####################
+
+word_lenght_freqeunce = {}
+
+for word in striped_analyzed_text:
+    if word.isalpha():
+        word_lenght = len(word)
+        if word_lenght not in word_lenght_freqeunce:
+            word_lenght_freqeunce[word_lenght] = 1
+        else:
+            word_lenght_freqeunce[word_lenght] += 1
+
+max_length = max(word_lenght_freqeunce.keys())
+
+
+print(splitter)
+print(f"{'LEN':<5}|{'OCCURRENCES':^20}|{'NR.':>5}")
+print(splitter)
+
+
+for length in range(1, max_length + 1):
+    freq = word_lenght_freqeunce.get(length, 0)
+    bar = '*' * freq
+    print(f"{length:<5}|{bar:^20}|{freq:>5}")
+
+print(splitter)
+print(f"TADAAAAA? O:)")
