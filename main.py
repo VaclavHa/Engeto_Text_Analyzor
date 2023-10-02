@@ -1,6 +1,8 @@
 """
 První projekt do Engeto Online Python Akademie
 
+Textový Analyzátor
+
 author: Václav Hanzl
 email: hanzlvaclav00@gmail.com
 discord: Wencour#6130 / Vašek H. (Engeto server)
