@@ -8,7 +8,6 @@ email: hanzlvaclav00@gmail.com
 discord: Wencour#6130 / Vašek H. (Engeto server)
 
 """
-# import
 
 
 TEXTS = ['''
@@ -40,7 +39,7 @@ garpike and stingray are also present.'''
          ]
 
 
-##################### Users, input username and password, pass or quit #####################
+# Users, input username and password, pass or quit
 splitter = "=" * 50
 
 users = {
@@ -70,7 +69,7 @@ Terminating the program..."""
 )
     quit()
 
-##################### Text split into articles and index  #####################
+# Text split into articles and index
 
 number_of_articles = len(TEXTS)
 
@@ -82,7 +81,7 @@ for index, text in enumerate(TEXTS, start=1):
 print(splitter)
 
 
-##################### User input choosing number of article  #####################
+# User input choosing number of article
 
 
 article_input = input("Choose the number of article you wanna analyze: ")
@@ -101,7 +100,7 @@ else:
     print(f"You have not entered a digit.\nPlease try again...")
     quit()
 
-##################### Text split and strip  #####################
+# Text split and strip
 
 striped_analyzed_text = []
 
@@ -109,102 +108,67 @@ for words in chosen_article_number.split():
     clear_word = words.strip(".,:!?;/-")
     striped_analyzed_text.append(clear_word)
 
-##################### Word counter  #####################
-total_word_count = 0
+# Dict of Single words, Capital letter words, Uppercase words, Lowercase words
 
 single_word_counter = {}
+capital_letter_words = {}
+uppercase_words = {}
+lowercase_words = {}
 
 
 for words in striped_analyzed_text:
-    if words.isalpha():
-        total_word_count += 1
+
+    if words.isalpha(): # get single words
         if words not in single_word_counter:
             single_word_counter[words] = 1
         else:
             single_word_counter[words] += 1
 
-# print(f"Word counter: {single_word_counter}")
-print(f"There are {total_word_count} words in the seleceted text.")
-print(splitter)
-
-
-##################### Words starting with only capital letter  #####################
-capital_letter_count = 0
-capital_letter_words = {}
-
-for words in striped_analyzed_text:
-    if words.istitle() and words.isalpha():
-        capital_letter_count += 1
+    if words.istitle() and words.isalpha(): # Words with capital letter
         if words not in capital_letter_words:
             capital_letter_words[words] = 1
         else:
             capital_letter_words[words] += 1
 
-# print(f"Capital letter words: {capital_letter_words}")
-print(f"There are {capital_letter_count} titlecase words.")
-print(splitter)
-
-##################### Uppercase words  #####################
-uppercase_count = 0
-uppercase_words = {}
-
-for words in striped_analyzed_text:
-    if words.isupper() and words.isalpha():
-        uppercase_count += 1
+    if words.isupper() and words.isalpha(): # Words that are Uppercase
         if words not in uppercase_words:
             uppercase_words[words] = 1
         else:
             uppercase_words[words] += 1
 
-# print(f"Uppercase words: {uppercase_words}")
-print(f"There are {uppercase_count} uppercase words.")
-print(splitter)
-
-##################### Lowercase words  #####################
-lowercase_count = 0
-lowercase_words = {}
-
-for words in striped_analyzed_text:
-    if words.islower() and words.isalpha():
-        lowercase_count += 1
+    if words.islower() and words.isalpha(): # Words that are Lowercase
         if words not in lowercase_words:
             lowercase_words[words] = 1
         else:
             lowercase_words[words] += 1
 
-# print(f"Lowercase words: {lowercase_words}")
-print(f"There are {lowercase_count} lowercase words.")
-print(splitter)
-##################### Number count  #####################
-numbers_count = 0
+
+
+# Number count
+
 numbers_occurance = {}
 
-for numbers in striped_analyzed_text:
+for numbers in striped_analyzed_text: # Number occurance in the article
     if numbers.isdigit():
-        numbers_count += 1
         if numbers not in numbers_occurance:
             numbers_occurance[numbers] = 1
         else:
             numbers_occurance[numbers] += 1
 
 
-# print(f"Numbers: {numbers_occurance}")
-print(f"There are {numbers_count} numeric strings.")
 
-print(splitter)
-
-##################### Numbers sum  #####################
+# Numbers sum
 
 numbers_summary = 0
 
-for number in numbers_occurance:
+for number in numbers_occurance: # Summary of all numbers in the article
     numbers_summary += int(number)
 
 print(f"The sum of all the numbers is: {numbers_summary}")
 
 print(splitter)
 
-##################### Graf  #####################
+# Graf
 
 word_lenght_freqeunce = {}
 
