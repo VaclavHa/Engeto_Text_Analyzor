@@ -168,11 +168,11 @@ print(f"The sum of all the numbers is: {numbers_summary}")
 
 print(splitter)
 
-# Graf
+# Creating the graph
 
 word_lenght_freqeunce = {}
 
-for word in striped_analyzed_text:
+for word in striped_analyzed_text: # Counter of the same lenght words
     if word.isalpha():
         word_lenght = len(word)
         if word_lenght not in word_lenght_freqeunce:
@@ -184,13 +184,13 @@ max_length = max(word_lenght_freqeunce.keys())
 
 
 print(splitter)
-print(f"{'LEN':<5}|{'OCCURRENCES':^20}|{'NR.':>5}")
+print(f"{'LEN':<5}|{'OCCURRENCES':^20}|{'NR.':>5}") # Header for the visual graph
 print(splitter)
 
 
-for length in range(1, max_length + 1):
+for length in range(1, max_length + 1): # Data for the graph
     freq = word_lenght_freqeunce.get(length, 0)
-    bar = '*' * freq
+    bar = '*' * freq # visual illustraion for number of words with the same lenght
     print(f"{length:<5}|{bar:^20}|{freq:>5}")
 
 print(splitter)
